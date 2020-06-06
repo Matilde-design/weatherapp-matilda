@@ -1,12 +1,16 @@
 function displayDate (timestamp)
-{ let date = new Date(timestamp);
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
+{ let now = new Date(timestamp);
+    let date = now.getDate();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
     let days =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    let day = days [date.getDay()];
+    let day = days [now.getDay()];
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    let month = months[date.getMonth()] ;
-    return `${day} ${month} <br/> ${hours}:${minutes} `
+    let month = months[now.getMonth()] ;
+    let ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    return `${day} ${date} ${month} <br/> ${hours}:${minutes} ${ampm} `
 }
 
 function displayTemperature(response) {
