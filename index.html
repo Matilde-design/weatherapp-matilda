@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
         <div class="weather-app-container">
         <div class="row">
            <form>Search here</form> 
         </div>
        <div class="row">
            <div class="col-6">
-            <img src="img/undraw_weather.png" alt="weatherimage" width="100%">
+            <img src="img/undraw_weather.png" alt="weatherimage" width="100%" class="weather-image">
+            <!-- <div class="overview">
             <ul>
-                <small>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 50%</li>
-                <li>Wind: 2km/h</li>
-            </small>
+                <li><small>Precipitation: 0%</small></li>
+                <li><small>Humidity: 0%</small></li>
+                <li><small>Wind: 0%</small></li>
             </ul>
+        </div> -->
            </div>
            <div class= "col-6">
+            <div class="daily-weather-info">
             <ul>
                 <li>
                     Today in,
@@ -36,28 +39,29 @@
                     It's sunny.
                 </li>
             </ul>
-            <h1>
-                25ºC | F
-            </h1>
+            <strong>25</strong> 
+            <span class="units">ºC | ºF</span>
+        
             <ul>
-                <li>Sunday 05 May</li>
-                <li>4:06 pm</li>
+                <li> <small> Sunday 05 May</small></li>
+                <li><small> 4:06 pm</small></li>
             </ul>
+        </div>
            </div>
        </div>
        <br>
-       <div class="row">
-           <div class="col-2"><p>MON<br> ☀︎<br> 25º|<small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> ☀︎<br> 25º|<small>18º</p></small></div> 
-            <div class="col-2"><p>MON<br> ☀︎<br> 25º|<small>18º</p></small></div>  
-           <div class="col-2"><p>MON<br> ☀︎<br> 25º|<small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> ☀︎<br> 25º|<small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> ☀︎<br> 25º|<small>18º</p></small></div>
+       <div class="row next-days-weather">
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
        </div>
-       <small> <a href="https://github.com/Matilde-design/Weather-app-matilde" target="_blank">Open-Source code</a>, by Matilde Maia</small>
     </div>
-      
+    <small> <a href="https://github.com/Matilde-design/Weather-app-matilde" target="_blank">Open-Source code</a>, by Matilde Maia</small>
     </div>
+</div>
    
     <script src="src/app.js"></script>
 </body>
