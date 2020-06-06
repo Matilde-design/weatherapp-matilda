@@ -13,12 +13,27 @@
     <div class="container">
         <div class="weather-app-wrapper">
         <div class="weather-app-container">
+            <form id="search-form" class="mb-4">
         <div class="row">
-           <form>Search here</form> 
+            <div class="col-1">
+            <span class="search-icon">
+                <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+              </svg> 
+              </span>
+            </div>
+              <div class="col-7">
+                  <input type="search" placeholder="Search City" class="form-control" id="city-input" autocomplete="off">
+              </div>
+             <!--   <div class= "col-2">
+                <button type="button" class="btn btn-dark">Search</button>
+              </div> -->
         </div>
+    </form>
        <div class="row">
            <div class="col-6">
-            <img src="img/undraw_weather.png" alt="weatherimage" width="100%" class="weather-image">
+            <img src="" alt="weatherimage" width="80%" class="weather-image" id="icon">
             <!-- <div class="overview">
             <ul>
                 <li><small>Precipitation: 0%</small></li>
@@ -50,12 +65,12 @@
        </div>
        <br>
        <div class="row next-days-weather">
-           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
-           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small>18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small class="align-middle">18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon" > ☀︎ </span><br> 25º | <small class="align-middle">18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small class="align-middle">18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small class="align-middle">18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small class="align-middle">18º</p></small></div>
+           <div class="col-2"><p>MON<br> <span class="icon"> ☀︎ </span><br> 25º | <small class="align-middle">18º</p></small></div>
        </div>
     </div>
     <small> <a href="https://github.com/Matilde-design/Weather-app-matilde" target="_blank">Open-Source code</a>, by Matilde Maia</small>
