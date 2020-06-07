@@ -37,3 +37,10 @@ border: 1px solid grey}
 
 .search-icon { font-size: 23px;}
 .btn-dark {padding: 6px 30px;}
+
+.units .active { color: black;
+cursor: default;}
+
+.units .active:hover {
+    text-decoration: none;
+}
