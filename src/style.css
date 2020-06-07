@@ -1,10 +1,14 @@
-body {font-family: 'Nunito', sans-serif;}
+body {font-family: 'Nunito', sans-serif;
+}
 
 ul { margin: 0;
 padding: 0;}
 
 li { list-style: none;
-font-size: 16px;}
+font-size: 16px;
+line-height: 30px;}
+
+.city { font-size: 20px;}
 
 .overview {margin: 10px 0px;}
 
@@ -14,8 +18,9 @@ margin: 20px 0px; }
 .daily-weather-info {margin-left: 30px;}
 
 .daily-weather-info strong {
-    margin: 40px 0px;
+margin: 40px 0px;
 font-size: 46px;
+color: #142850;
 }
 .daily-weather-info .units { position: relative;
 top: -20px}
@@ -27,15 +32,19 @@ font-size: 40px;
 line-height: 1,5;
  color: #F9A725;}
 
+.search-form {margin-bottom: 10px;}
 
 .weather-app-wrapper {max-width: 600px;
-    margin: 40px auto;}
+    margin: 40px auto;
+}
 
 .weather-app-container {
 padding: 40px;
-border: 1px solid grey}
+border: 1px solid #000;
+border-radius: 20px;}
 
-.search-icon { font-size: 23px;}
+.search-icon { font-size: 20px;}
+
 .btn-dark {padding: 6px 30px;}
 
 .units .active { color: black;
@@ -43,4 +52,13 @@ cursor: default;}
 
 .units .active:hover {
     text-decoration: none;
+}
+
+button {
+    max-width: 100%;
+    background-color: #fff;
+    border: 1px solid #fff;
+    font-size: 23px;
+    padding: 0px;
+    margin: 0px;
 }

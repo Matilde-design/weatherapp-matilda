@@ -30,7 +30,7 @@ function displayTemperature(response) {
     celsiusTemperature = response.data.main.temp;
 
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
-    cityElement.innerHTML = `<i>${response.data.name}<i>`;
+    cityElement.innerHTML = `${response.data.name}`;
     descriptionElement.innerHTML = `It's ${response.data.weather[0].description}`;
     dayElement.innerHTML = displayDate(response.data.dt * 1000);
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -45,7 +45,7 @@ function showForecast(response){
         forecast = response.data.list[index];
     forecastElement.innerHTML += 
     ` <div class="col-2">
-    <p><small>${forecastHours(forecast.dt*1000)}</small><br> <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" class="icon"> <br> ${Math.round(forecast.main.temp_max)}º | <small class="align-middle">${Math.round(forecast.main.temp_min)}</p></small>
+    <p><small>${forecastHours(forecast.dt*1000)}</small><br> <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" class="icon"> <br> ${Math.round(forecast.main.temp_max)}º | <small class="align-middle">${Math.round(forecast.main.temp_min)}º</p></small>
     </div>
 </div>`;
 }
@@ -68,6 +68,17 @@ function handleSubmit(event) {
     
 }
 
+// function searchLocation (position) {
+//  let key = "6da49f4c9efbefcf042ac4b59c666478";
+//  let lat = position.coords.latitude;
+//  let long = position.coords.longitude;
+// apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric`;
+//   axios.get(apiUrl).then(displayTemperature);}
+
+//function displayCurrentLocation(event)
+//{  event.preventDefault();
+//    navigator.geolocation.getCurrentPosition (searchLocation);}
+
 function displayfahrenheiTemperature (event) {
     event.preventDefault();
 
@@ -87,7 +98,11 @@ function displayCelsiusTemperature (event) {
     temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+
 let celsiusTemperature = null;
+
+// let currentLocationIcon = document.querySelector("#current-location")
+// currentLocationIcon.addEventListener ("click", displayCurrentLocation);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
