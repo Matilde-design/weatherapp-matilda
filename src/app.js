@@ -13,6 +13,12 @@ function displayDate (timestamp)
     return `${day} ${date} ${month} <br/> ${hours}:${minutes} ${ampm} `
 }
 
+function forecastHours(timestamp) {
+    let now = new Date(timestamp)
+    let hours = now.getHours();
+    return `${hours}:00`;
+}
+
 function displayTemperature(response) {
     console.log (response.data)
     let cityElement = document.querySelector("#city")
@@ -24,10 +30,25 @@ function displayTemperature(response) {
     celsiusTemperature = response.data.main.temp;
 
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
-    cityElement.innerHTML = response.data.name;
+    cityElement.innerHTML = `<i>${response.data.name}<i>`;
     descriptionElement.innerHTML = `It's ${response.data.weather[0].description}`;
     dayElement.innerHTML = displayDate(response.data.dt * 1000);
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+}
+
+function showForecast(response){
+    let forecastElement = document.querySelector("#weatherForecast");
+    forecastElement.innerHTML = null;
+    let forecast =  null;
+    
+    for (let index = 0; index < 6; index++) {
+        forecast = response.data.list[index];
+    forecastElement.innerHTML += 
+    ` <div class="col-2">
+    <p><small>${forecastHours(forecast.dt*1000)}</small><br> <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" class="icon"> <br> ${Math.round(forecast.main.temp_max)}º | <small class="align-middle">${Math.round(forecast.main.temp_min)}</p></small>
+    </div>
+</div>`;
+}
 }
 
 function search(city) {
@@ -35,6 +56,9 @@ let apiKey = "6da49f4c9efbefcf042ac4b59c666478";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
+
+apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showForecast);
 }
 
 function handleSubmit(event) {
