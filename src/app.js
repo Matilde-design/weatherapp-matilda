@@ -3,6 +3,9 @@ function displayDate (timestamp)
     let date = now.getDate();
     let hours = now.getHours();
     let minutes = now.getMinutes();
+    if (minutes < 10) {
+        minutes= `0${minutes}`;
+      }
     let days =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     let day = days [now.getDay()];
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -27,6 +30,7 @@ function displayTemperature(response) {
     let dayElement = document.querySelector("#date")
     let iconElement = document.querySelector ("#icon")
 
+
     celsiusTemperature = response.data.main.temp;
 
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -45,7 +49,7 @@ function showForecast(response){
         forecast = response.data.list[index];
     forecastElement.innerHTML += 
     ` <div class="col-2">
-    <p><small>${forecastHours(forecast.dt*1000)}</small><br> <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" class="icon"> <br> ${Math.round(forecast.main.temp_max)}º | <small class="align-middle">${Math.round(forecast.main.temp_min)}º</p></small>
+    <p><small>${forecastHours(forecast.dt*1000)}</small><br><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" class="icon"> <br> ${Math.round(forecast.main.temp_max)}º | <small class="align-middle">${Math.round(forecast.main.temp_min)}º</p></small>
     </div>
 </div>`;
 }
@@ -68,16 +72,22 @@ function handleSubmit(event) {
     
 }
 
-// function searchLocation (position) {
-//  let key = "6da49f4c9efbefcf042ac4b59c666478";
-//  let lat = position.coords.latitude;
-//  let long = position.coords.longitude;
-// apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric`;
-//   axios.get(apiUrl).then(displayTemperature);}
+function searchLocation (position) {
+let key = "6da49f4c9efbefcf042ac4b59c666478";
+let lat = position.coords.latitude;
+let long = position.coords.longitude;
 
-//function displayCurrentLocation(event)
-//{  event.preventDefault();
-//    navigator.geolocation.getCurrentPosition (searchLocation);}
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric`;
+axios.get(apiUrl).then(displayTemperature);
+
+apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${key}&units=metric`
+axios.get(apiUrl).then(showForecast);
+
+}
+
+function displayCurrentLocation(event)
+{  event.preventDefault();
+navigator.geolocation.getCurrentPosition (searchLocation);}
 
 function displayfahrenheiTemperature (event) {
     event.preventDefault();
@@ -101,14 +111,16 @@ function displayCelsiusTemperature (event) {
 
 let celsiusTemperature = null;
 
-// let currentLocationIcon = document.querySelector("#current-location")
-// currentLocationIcon.addEventListener ("click", displayCurrentLocation);
+let currentLocationIcon = document.querySelector("#current-location")
+currentLocationIcon.addEventListener ("click", displayCurrentLocation);
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
+form.addEventListener("click", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener ("click", displayfahrenheiTemperature);
 
 let celsiusLink = document.querySelector ("#celsius");
 celsiusLink.addEventListener ("click", displayCelsiusTemperature);
+
+search ("Porto")
