@@ -29,7 +29,7 @@ function displayTemperature(response) {
     let temperatureElement = document.querySelector("#temperature")
     let dayElement = document.querySelector("#date")
     let iconElement = document.querySelector ("#icon")
-
+    let realIcon = response.data.weather[0].icon;
 
     celsiusTemperature = response.data.main.temp;
 
@@ -37,7 +37,7 @@ function displayTemperature(response) {
     cityElement.innerHTML = `${response.data.name}`;
     descriptionElement.innerHTML = `It's ${response.data.weather[0].description}`;
     dayElement.innerHTML = displayDate(response.data.dt * 1000);
-    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${realIcon}@2x.png`)
 }
 
 function showForecast(response){
@@ -85,6 +85,8 @@ axios.get(apiUrl).then(showForecast);
 
 }
 
+
+
 function displayCurrentLocation(event)
 {  event.preventDefault();
 navigator.geolocation.getCurrentPosition (searchLocation);}
@@ -109,13 +111,14 @@ function displayCelsiusTemperature (event) {
 }
 
 
+
 let celsiusTemperature = null;
 
 let currentLocationIcon = document.querySelector("#current-location")
 currentLocationIcon.addEventListener ("click", displayCurrentLocation);
 
 let form = document.querySelector("#search-form");
-form.addEventListener("click", handleSubmit);
+form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener ("click", displayfahrenheiTemperature);
